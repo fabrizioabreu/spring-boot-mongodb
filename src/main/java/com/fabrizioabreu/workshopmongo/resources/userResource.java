@@ -39,8 +39,8 @@ public class userResource {
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
-	
-	// IMPLEMENTANDO MÉTODO INSERT
+
+	// IMPLEMENTANDO  INSERT
 	// @PostMapping
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> inesrt(@RequestBody UserDTO objDto) {
@@ -50,4 +50,10 @@ public class userResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+	// IMPLEMENTANDO  DELETE
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable String id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }
